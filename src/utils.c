@@ -3,23 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
+/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 13:27:37 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/03 13:24:36 by mehdimirzai      ###   ########.fr       */
+/*   Created: 2023/07/07 13:32:37 by mmirzaie          #+#    #+#             */
+/*   Updated: 2023/07/07 13:32:38 by mmirzaie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fract.h"
 
-/**
- * @brief    Puts the provided color to the pixel at the provided coordinates.
- *
- * @param    fractal
- * @param    x         The graphic x coordinate
- * @param    y         The graphic y coordinate
- * @param    color     The color to put to the pixel.
- */
+void	new_julia(double *cx)
+{
+	static double	i;
+
+	i = 0.1;
+	if (i < M_PI && (*cx < 3 && *cx > -1.5))
+	{
+		i += 0.02;
+		*cx += i;
+	}
+	else
+	{
+		i = 0.1;
+		*cx += i;
+	}
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
+
+	if (s)
+	{
+		i = -1;
+		while (s[++i])
+			write(fd, &s[i], 1);
+		write(fd, "\n", 1);
+	}
+}
+
 void	put_color_to_pixel(t_fractal *fractal, int x, int y, int color)
 {
 	int	*buffer;
@@ -28,11 +50,6 @@ void	put_color_to_pixel(t_fractal *fractal, int x, int y, int color)
 	buffer[(y * fractal->size_line / 4) + x] = color;
 }
 
-/**
- * @brief    Exits the program.
- *
- * @param    fractal
- */
 int	exit_fractal(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->mlx, fractal->image);
@@ -43,31 +60,14 @@ int	exit_fractal(t_fractal *fractal)
 	return (0);
 }
 
-/**
- * @brief    Generates a random double between -1.5 and 1.5.
- *
- * @return   double    The random double.
- */
-double	generate_random_c(void)
+void	change_iterations(t_fractal *fractal, int keycode)
 {
-	return (((double)rand() / RAND_MAX) * 3.0 - 1.5);
-}
-
-/**
- * @brief    Increases or decreases the number of iterations.
- * The lower the number of iterations is, the faster the fractal is generated.
- *
- * @param    fractal
- * @param    key_code
- */
-void	change_iterations(t_fractal *fractal, int key_code)
-{
-	if (key_code == M)
+	if (keycode == D)
 	{
-		if (fractal->max_iterations > 42)
+		if (fractal->max_iterations > 0)
 			fractal->max_iterations -= 42;
 	}
-	else if (key_code == P)
+	else if (keycode == I)
 	{
 		if (fractal->max_iterations < 4200)
 			fractal->max_iterations += 42;

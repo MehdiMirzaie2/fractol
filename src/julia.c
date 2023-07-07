@@ -1,12 +1,12 @@
-// /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
+/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 13:27:23 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/03 13:58:16 by mehdimirzai      ###   ########.fr       */
+/*   Created: 2023/07/07 13:31:16 by mmirzaie          #+#    #+#             */
+/*   Updated: 2023/07/07 13:31:18 by mmirzaie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	calculate_julia(t_fractal *fractal, double cx, double cy)
 	int		i;
 	double	x_temp;
 
-	fractal->name = "julia";
+	fractal->cx = cx;
+	fractal->cy = cy;
 	i = 0;
-	fractal->offset_x = -1.5;
-	fractal->zoom = 230;
 	fractal->zx = (fractal->x / fractal->zoom) + fractal->offset_x;
-	fractal->zy = (fractal->y / fractal->zoom) + fractal->offset_y;;
+	fractal->zy = (fractal->y / fractal->zoom) + fractal->offset_y;
 	while (++i < fractal->max_iterations)
 	{
-		x_temp = fractal->zx * fractal->zx - fractal->zy * fractal->zy - 0.79;
-		fractal->zy = 2. * fractal->zx * fractal->zy + 0.15;
+		x_temp = fractal->zx * fractal->zx - fractal->zy
+			* fractal->zy + fractal->cx;
+		fractal->zy = 2. * fractal->zx * fractal->zy + fractal->cy;
 		fractal->zx = x_temp;
 		if (fractal->zx * fractal->zx + fractal->zy
 			* fractal->zy >= __DBL_MAX__)

@@ -3,17 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
+/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 22:55:04 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/04 20:13:52 by mehdimirzai      ###   ########.fr       */
+/*   Created: 2023/07/07 13:31:42 by mmirzaie          #+#    #+#             */
+/*   Updated: 2023/07/07 13:43:22 by mmirzaie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fract.h"
 #include <string.h>
 
-int	draw_fractal(t_fractal *fractal, char *query, double cx, double cy)
+// if they want to see more.
+// else if (strncmp(query, "ship", 4) == 0)
+// 	calculate_burning_ship(fractal);
+// else if (strncmp(query, "tri", 3) == 0)
+// 	calculate_burning_ship(fractal);
+
+static void	free_and_explain(t_fractal *fractal)
+{
+	ft_putendl_fd("Available fractals: a = mandel, b = julia, c = newton\
+	\n\033[1;31mASK FOR EXTRA!\033[0m", 1);
+	exit_fractal(fractal);
+}
+
+int	draw_fractal(t_fractal *fractal, double cx, double cy)
 {
 	fractal->x = 0;
 	fractal->y = 0;
@@ -21,19 +34,14 @@ int	draw_fractal(t_fractal *fractal, char *query, double cx, double cy)
 	{
 		while (fractal->y < SIZE)
 		{
-			if (strncmp(query, "mandel", 7) == 0)
+			if (fractal->name == 'a')
 				calculate_mandelbrot(fractal);
-			else if (strncmp(query, "julia", 6) == 0)
+			else if (fractal->name == 'b')
 				calculate_julia(fractal, cx, cy);
-			else if (strncmp(query, "newton", 6) == 0)
-				// calculate_burning_ship(fractal);
+			else if (fractal->name == 'c')
 				calculate_newton(fractal);
-				// newtonFractal(fractal);
 			else
-			{
-				// ft_putendl_fd("Available fractals: mandel, julia, ship", 1);
-				exit_fractal(fractal);
-			}
+				free_and_explain(fractal);
 			fractal->y++;
 		}
 		fractal->x++;
@@ -50,17 +58,18 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		// ft_putendl_fd("Usage: ./fractol <fractal>", 1);
-		// ft_putendl_fd("Available fractals: mandelbrot, julia, burningship", 1);
+		ft_putendl_fd("Available fractals: a = mandel, b = julia, c = newton\
+		\n\033[1;31mASK FOR EXTRA!\033[0m", 1);
 		return (0);
 	}
 	fractal = malloc(sizeof(t_fractal));
 	init_fractal(fractal);
 	init_mlx(fractal);
+	fractal->name = argv[1][0];
 	mlx_key_hook(fractal->window, key_hook, fractal);
 	mlx_mouse_hook(fractal->window, mouse_hook, fractal);
-	// mlx_hook(fractal->window, 17, 0L, exit_fractal, fractal);
-	draw_fractal(fractal, argv[1], -0.745429, 0.05);
+	mlx_hook(fractal->window, 17, 0L, exit_fractal, fractal);
+	draw_fractal(fractal, -0.79, 0.15);
 	mlx_loop(fractal->mlx);
 	return (0);
 }

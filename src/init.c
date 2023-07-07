@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
+/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 13:32:20 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/07/04 18:39:44 by mehdimirzai      ###   ########.fr       */
+/*   Created: 2023/07/07 13:31:06 by mmirzaie          #+#    #+#             */
+/*   Updated: 2023/07/07 13:31:08 by mmirzaie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	init_fractal(t_fractal *fractal)
 	fractal->zoom = 250;
 	fractal->offset_x = -1.5;
 	fractal->offset_y = -1.4;
-	fractal->max_iterations = 100;
+	fractal->max_iterations = 42;
+	fractal->tolerance = 0.000001;
 }
 
 void	init_mlx(t_fractal *fractal)
