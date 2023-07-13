@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 {
 	t_fractal	*fractal;
 
-	if (argc != 2)
+	if (argc != 2 || argv[1][1] != NULL)
 	{
 		ft_putendl_fd("Available fractals: a = mandel, b = julia, c = newton\
 		\n\033[1;31mASK FOR EXTRA!\033[0m", 1);

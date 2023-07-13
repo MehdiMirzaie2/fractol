@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   fract.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 19:17:56 by mehdimirzai       #+#    #+#             */
-/*   Updated: 2023/07/07 12:47:07 by mmirzaie         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:33:54 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACT_H
+# define FRACT_H
 
 # include <mlx.h>
 # include <math.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # define SIZE 700
 
@@ -54,7 +54,7 @@ typedef struct s_fractal
 	double	offset_x;
 	double	offset_y;
 	double	zoom;
-	int	name;
+	int		name;
 	int		max_iterations;
 	float	tolerance;
 }			t_fractal;
@@ -87,8 +87,6 @@ void		calculate_tri(t_fractal *fractal);
 
 // main.c
 int			draw_fractal(t_fractal *fractal, double cx, double cy);
-// int			draw_fractal(t_fractal *fractal, char *query, double cx, double cy);
-// int			draw_fractal(t_fractal *fractal, int query, double cx, double cy);
 
 // hooks
 void		key_hook(int keycode, t_fractal *fractal);
