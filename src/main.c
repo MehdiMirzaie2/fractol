@@ -6,7 +6,7 @@
 /*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:31:42 by mmirzaie          #+#    #+#             */
-/*   Updated: 2024/04/02 15:19:03 by mehdimirzai      ###   ########.fr       */
+/*   Updated: 2024/04/02 15:34:58 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	free_and_explain(t_fractal *fractal)
 	ft_putendl_fd("Available fractals: a = mandel, b = julia, c = newton\
 	\n\033[1;31mASK FOR EXTRA!\033[0m", 1);
 	exit_fractal(fractal);
-	exit(0);
+	exit(1);
 }
 
 int	draw_fractal(t_fractal *fractal, double cx, double cy)
@@ -55,22 +55,21 @@ int	draw_fractal(t_fractal *fractal, double cx, double cy)
 
 int	main(int argc, char **argv)
 {
-	t_fractal	*fractal;
+	t_fractal	fractal;
 
 	if (argc != 2 || argv[1][1] != '\0')
 	{
 		ft_putendl_fd("Available fractals: a = mandel, b = julia, c = newton\
 		\n\033[1;31mASK FOR EXTRA!\033[0m", 1);
-		return (0);
+		return (1);
 	}
-	fractal = malloc(sizeof(t_fractal));
-	init_fractal(fractal);
-	init_mlx(fractal);
-	fractal->name = argv[1][0];
-	mlx_key_hook(fractal->window, key_hook, fractal);
-	mlx_mouse_hook(fractal->window, mouse_hook, fractal);
-	mlx_hook(fractal->window, 17, 0L, exit_fractal, fractal);
-	draw_fractal(fractal, -0.79, 0.15);
-	mlx_loop(fractal->mlx);
+	init_fractal(&fractal);
+	init_mlx(&fractal);
+	fractal.name = argv[1][0];
+	mlx_key_hook(fractal.window, key_hook, &fractal);
+	mlx_mouse_hook(fractal.window, mouse_hook, &fractal);
+	mlx_hook(fractal.window, 17, 0L, exit_fractal, &fractal);
+	draw_fractal(&fractal, -0.79, 0.15);
+	mlx_loop(fractal.mlx);
 	return (0);
 }
