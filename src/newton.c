@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   newton.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:32:00 by mmirzaie          #+#    #+#             */
-/*   Updated: 2023/07/07 13:50:44 by mmirzaie         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:15:55 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,12 @@ void	init_roots(t_float2 *roots)
 	}
 }
 
-unsigned int	checker_tolerance(t_fractal *fractal, t_float2 z,
-	unsigned int iterations)
+static unsigned int	checker_tolerance(t_fractal *fractal, t_float2 z)
 {
 	t_float2		difference;
 	static t_float2	roots[3];
 
-	init_roots(&roots);
+	init_roots(roots);
 	difference = find_diff(z, roots[0]);
 	if (fabs(difference.x) < fractal->tolerance
 		&& fabs(difference.y) < fractal->tolerance)
@@ -81,7 +80,7 @@ unsigned int	checker_tolerance(t_fractal *fractal, t_float2 z,
 void	calculate_newton(t_fractal *fractal)
 {
 	t_float2		z;
-	unsigned int	iterations;
+	size_t			iterations;
 
 	iterations = 0;
 	z.x = (fractal->x / fractal->zoom) + fractal->offset_x;
@@ -89,7 +88,7 @@ void	calculate_newton(t_fractal *fractal)
 	while (iterations < fractal->max_iterations)
 	{
 		z = next(z);
-		if (checker_tolerance(fractal, z, iterations) == 1)
+		if (checker_tolerance(fractal, z) == 1)
 			return (put_color_to_pixel(fractal, fractal->x, fractal->y,
 					fractal->color * iterations / 2));
 		++iterations;

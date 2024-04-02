@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:31:16 by mmirzaie          #+#    #+#             */
-/*   Updated: 2023/07/07 13:31:18 by mmirzaie         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:16:58 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	calculate_julia(t_fractal *fractal, double cx, double cy)
 {
-	int		i;
+	size_t	i;
 	double	x_temp;
 
 	fractal->cx = cx;

@@ -11,7 +11,7 @@ MLX = mlx/libmlx.a
 
 NAME = fractol
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -w -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-w -g -fsanitize=address
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
 AR = ar rc
 

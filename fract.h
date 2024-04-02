@@ -6,7 +6,7 @@
 /*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 19:17:56 by mehdimirzai       #+#    #+#             */
-/*   Updated: 2023/07/13 15:33:54 by mehdimirzai      ###   ########.fr       */
+/*   Updated: 2024/04/02 15:14:46 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_fractal
 	double	offset_y;
 	double	zoom;
 	int		name;
-	int		max_iterations;
+	size_t	max_iterations;
 	float	tolerance;
 }			t_fractal;
 
@@ -89,7 +89,7 @@ void		calculate_tri(t_fractal *fractal);
 int			draw_fractal(t_fractal *fractal, double cx, double cy);
 
 // hooks
-void		key_hook(int keycode, t_fractal *fractal);
-void		mouse_hook(int mousecode, int x, int y, t_fractal *fractal);
+int			key_hook(int keycode, t_fractal *fractal);
+int			mouse_hook(int mousecode, int x, int y, t_fractal *fractal);
 
 #endif

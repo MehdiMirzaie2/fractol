@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:32:37 by mmirzaie          #+#    #+#             */
-/*   Updated: 2023/07/07 13:32:38 by mmirzaie         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:25:42 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	exit_fractal(t_fractal *fractal)
 	mlx_destroy_window(fractal->mlx, fractal->window);
 	free(fractal->mlx);
 	free(fractal);
-	exit(1);
 	return (0);
 }
 

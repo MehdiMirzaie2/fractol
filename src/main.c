@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:31:42 by mmirzaie          #+#    #+#             */
-/*   Updated: 2023/07/07 13:43:22 by mmirzaie         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:19:03 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	free_and_explain(t_fractal *fractal)
 	ft_putendl_fd("Available fractals: a = mandel, b = julia, c = newton\
 	\n\033[1;31mASK FOR EXTRA!\033[0m", 1);
 	exit_fractal(fractal);
+	exit(0);
 }
 
 int	draw_fractal(t_fractal *fractal, double cx, double cy)
@@ -56,7 +57,7 @@ int	main(int argc, char **argv)
 {
 	t_fractal	*fractal;
 
-	if (argc != 2 || argv[1][1] != NULL)
+	if (argc != 2 || argv[1][1] != '\0')
 	{
 		ft_putendl_fd("Available fractals: a = mandel, b = julia, c = newton\
 		\n\033[1;31mASK FOR EXTRA!\033[0m", 1);

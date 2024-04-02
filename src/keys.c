@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:31:34 by mmirzaie          #+#    #+#             */
-/*   Updated: 2023/07/07 13:31:35 by mmirzaie         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:19:19 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fract.h"
 
-void	key_hook(int keycode, t_fractal *fractal)
+int	key_hook(int keycode, t_fractal *fractal)
 {
 	double	cx;
 	double	cy;
@@ -20,7 +20,10 @@ void	key_hook(int keycode, t_fractal *fractal)
 	cx = fractal->cx;
 	cy = fractal->cy;
 	if (keycode == ESC)
+	{
 		exit_fractal(fractal);
+		exit(0);
+	}
 	if (keycode == UP)
 		fractal->offset_y += 0.2;
 	else if (keycode == DOWN)
@@ -36,9 +39,10 @@ void	key_hook(int keycode, t_fractal *fractal)
 	else if (keycode == I || keycode == D)
 		change_iterations(fractal, keycode);
 	draw_fractal(fractal, cx, cy);
+	return (0);
 }
 
-void	mouse_hook(int mousecode, int x, int y, t_fractal *fractal)
+int	mouse_hook(int mousecode, int x, int y, t_fractal *fractal)
 {
 	double	zoom_level;
 
@@ -60,4 +64,5 @@ void	mouse_hook(int mousecode, int x, int y, t_fractal *fractal)
 		fractal->zoom /= zoom_level;
 	}
 	draw_fractal(fractal, fractal->cx, fractal->cy);
+	return (0);
 }

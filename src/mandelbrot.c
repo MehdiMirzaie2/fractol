@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmirzaie <mmirzaie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdimirzaie <mehdimirzaie@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:32:18 by mmirzaie          #+#    #+#             */
-/*   Updated: 2023/07/07 13:32:20 by mmirzaie         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:17:41 by mehdimirzai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	calculate_mandelbrot(t_fractal *fractal)
 {
-	int		i;
+	size_t	i;
 	double	x_temp;
 
 	i = 0;
