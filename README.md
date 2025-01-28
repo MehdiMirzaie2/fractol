@@ -1,4 +1,4 @@
-<h1 align="center">Fractal</h1>
+<h1 align="center">Fractals</h1>
 
 🟩⬛🟫🟫🟫⬛⬛🟦⬛⬛🟫🟫🟫⬛🟩
 ⬛⬛🟪🟪🟪⬛🟦🟦🟦⬛🟪🟪🟪⬛⬛
@@ -25,7 +25,7 @@
 
 # :sparkles: What is this Repo?
 
-Fract_ol was a unique programming project that introduced me to a different programming concept than what I was accustomed to. It was an individual project that allowed me to explore rendering using a basic graphics (MINILIBX).
+Fractal was a unique programming project that introduced me to a different programming concept than what I was accustomed to. It was an individual project that allowed me to explore rendering using a basic graphics (MINILIBX).
 
 To successfully complete the project, I implemented three different fractals. Two of them, the Mandelbrot set and Julia set, were mandatory requirements. Additionally, I chose to implement the Newton fractal as my third fractal.
 
@@ -42,8 +42,10 @@ This Project was made with:
 * [Makefile](https://www.gnu.org/software/make/manual/make.html)
 * [Shell](https://unixguide.readthedocs.io/en/latest/unixcheatsheet/)
 * [gcc](https://terminaldeinformacao.com/2015/10/08/como-instalar-e-configurar-o-gcc-no-windows-mingw/)
+* [Src](https://en.wikipedia.org/wiki/Mandelbrot_set)
 
 # :construction_worker: How to Run
+
 ```bash
 # *************COMMANDS************ #
 $ make all
