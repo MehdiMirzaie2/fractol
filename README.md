@@ -1,4 +1,4 @@
-<h1 align="center">42-Fract_ol</h1>
+<h1 align="center">Fractal</h1>
 
 🟩⬛🟫🟫🟫⬛⬛🟦⬛⬛🟫🟫🟫⬛🟩
 ⬛⬛🟪🟪🟪⬛🟦🟦🟦⬛🟪🟪🟪⬛⬛
@@ -23,9 +23,9 @@
 * [How to Run](#construction_worker-How-to-Run)
 * [Find a Bug? Or something needs to change?](#bug-Issues)
 
-# :sparkles: What is Fract_ol?
+# :sparkles: What is this Repo?
 
-Fract_ol was a unique programming project that introduced me to a different programming concept than what I was accustomed to. It was an individual project that allowed me to explore rendering using a basic graphics library developed by 42 School.
+Fract_ol was a unique programming project that introduced me to a different programming concept than what I was accustomed to. It was an individual project that allowed me to explore rendering using a basic graphics (MINILIBX).
 
 To successfully complete the project, I implemented three different fractals. Two of them, the Mandelbrot set and Julia set, were mandatory requirements. Additionally, I chose to implement the Newton fractal as my third fractal.
 
